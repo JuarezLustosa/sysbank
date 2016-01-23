@@ -4,7 +4,11 @@
 
 /* Your stylesheets goes here... */
 
-/* make sidebar nav vertical */ 
+/* make sidebar nav vertical */
+
+.btn-radio {
+  width: 100%;
+}
 
 .nav-side-menu {
   overflow: auto;
