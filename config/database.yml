@@ -1,0 +1,35 @@
+development:
+  adapter: postgresql
+  database: sysbank_development
+  encoding: unicode
+  reconnect: true
+  min_messages: warning
+  pool: 15
+  timeout: 5000
+  username: developer
+  password: developer
+
+test: &test
+  adapter: postgresql
+  database: sysbank_test
+  encoding: unicode
+  reconnect: true
+  min_messages: warning
+  pool: 15
+  timeout: 5000
+  username: developer
+  password: developer
+
+production:
+  adapter: postgresql
+  database: sysbank_production
+  encoding: unicode
+  reconnect: true
+  min_messages: warning
+  pool: 15
+  timeout: 5000
+  username: developer
+  password: developer
+
+cucumber:
+  <<: *test
