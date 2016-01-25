@@ -18,19 +18,16 @@ feature "I want be a new client", %q{
                               click no botão abaixo e cadastre-se"
 
     click_link "Cadastrar"
-    page.should have_content "Cadastro de Cliente"
+    page.should have_content "Dados cadastrais do Cliente"
 
-    fill_in "Name", :with => "Juarez Lustosa"
-    fill_in "CPF", :with => "1231233331232" #TODO make a generator
-    fill_in "Birthdate", :with => "30/04/1983"
-    fill_in "password", :with => "123456"
-    fill_in "password_confirmation", :with => "123456"
+    fill_in "Nome", :with => "Juarez Lustosa"
+    fill_in "Cpf", :with => "1231233331232" #TODO make a generator
+    fill_in "Senha", :with => "12345678"
+    fill_in "Confirmação de senha", :with => "12345678"
     fill_in "email", :with => "juarez.lustosa@gmail.com"
 
-    click_button("Salvar")
+    click_button("Tornar-se Correntista")
     
-    page.should have_content "Parabéns você é o nosso mais novo correntista."
-    page.should have_content "Anote o número da sua conta e senha"
-    page.should have_content "Essa senha é uma senha deve ser trocar, por favor click para altera-la."
+    page.should have_content "Parabéns seu cadastro foi realizado com sucesso. Seja Bem Vindo!"
   end
 end

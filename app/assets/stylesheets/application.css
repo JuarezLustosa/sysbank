@@ -2,14 +2,36 @@
  *= require bootstrap_and_overrides
  */
 
-/* Your stylesheets goes here... */
-
-/* make sidebar nav vertical */
-
-.btn-radio {
-  width: 100%;
+/* User sign in and sign forms. */
+.border-form-div {
+  max-width: 1000px;
+  padding: 19px 29px 29px;
+  margin: 1 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.border-form-div .form-signin-heading,
+.border-form-div .checkbox {
+  margin-bottom: 10px;
+}
+.border-form-div input[type="text"],
+.border-form-div input[type="email"],
+.border-form-div input[type="password"] {
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
 }
 
+.btn-radio { width: 100%; }
+
+/* make sidebar nav vertical */
 .nav-side-menu {
   overflow: auto;
   font-family: verdana;
@@ -22,6 +44,7 @@
   height: 100%;
   color: #e1ffff;
 }
+
 .nav-side-menu .brand {
   background-color: #23282e;
   line-height: 50px;
@@ -29,9 +52,11 @@
   text-align: center;
   font-size: 14px;
 }
+
 .nav-side-menu .toggle-btn {
   display: none;
 }
+
 .nav-side-menu ul,
 .nav-side-menu li {
   list-style: none;
@@ -39,20 +64,8 @@
   margin: 0px;
   line-height: 35px;
   cursor: pointer;
-  /*    
-    .collapsed{
-       .arrow:before{
-                 font-family: FontAwesome;
-                 content: "\f053";
-                 display: inline-block;
-                 padding-left:10px;
-                 padding-right: 10px;
-                 vertical-align: middle;
-                 float:right;
-            }
-     }
-*/
 }
+
 .nav-side-menu ul :not(collapsed) .arrow:before,
 .nav-side-menu li :not(collapsed) .arrow:before {
   font-family: FontAwesome;
