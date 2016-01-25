@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, 
          :authentication_keys => [:cpf]
 
-  validates_presence_of :name, :cpf
+  validates_presence_of :name
+  validates :cpf, 
+    :presence => true, 
+    :uniqueness => { :case_sensitive => false } 
 
   def email_required?
     false

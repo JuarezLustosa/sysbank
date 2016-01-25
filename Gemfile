@@ -13,9 +13,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'simple_form'
 
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
 #bootstrap
 gem "therubyracer"
 gem "less-rails"
@@ -27,7 +24,6 @@ group :development, :test do
 	gem 'capybara'
 	gem "database_cleaner"
   gem 'factory_girl_rails'
-  gem 'shoulda-matchers', '~> 3.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
