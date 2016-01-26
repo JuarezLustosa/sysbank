@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 gem 'pg'
 gem 'devise'
+gem 'bcrypt'
 
 #assets
 gem 'sass-rails', '~> 5.0'
@@ -24,6 +25,8 @@ group :development, :test do
 	gem 'capybara'
 	gem "database_cleaner"
   gem 'factory_girl_rails'
+  gem 'guard-rspec'
+  gem 'spring-commands-rspec'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
