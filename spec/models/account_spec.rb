@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe Account, type: :model do
 	let(:user) { User.new }
-  let(:account) { Account.new( 
+  let(:account) { Account.new(
     password: "121212",
     user: user,
     balance: 0,
-    status: "active") 
+    status: "active")
   }
 
-  let(:create_account) { create(:account)} 
+  let(:create_account) { create(:account)}
 
   it "a valid account" do
   	expect(account).to be_valid
@@ -39,7 +39,7 @@ RSpec.describe Account, type: :model do
 		 		expect(account).to be_invalid
 		 		expect_error_on :password
 		  end
-	  end     
+	  end
   end
 
   context 'user' do
@@ -56,7 +56,7 @@ RSpec.describe Account, type: :model do
       expect(account).to be_invalid
       expect_error_on :status
     end
-    
+
     it "set to active in new instance" do
       account = Account.new
       expect(account.status).to eq "active"
@@ -76,7 +76,7 @@ RSpec.describe Account, type: :model do
       @active  = create(:account)
       @closed  = create(:account, status: "closed")
     end
-    
+
     context "with matching active" do
       it "returns a sorted array of results that match" do
         expect(Account.active).to eq [@active]
@@ -96,9 +96,5 @@ RSpec.describe Account, type: :model do
       allow(account.close)
       expect_error_on :balance
     end
-  end
-
-  def expect_error_on method
-  	expect(account.errors[method].size).to eq(1)
   end
 end
