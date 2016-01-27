@@ -1,26 +1,25 @@
 <div class="nav-side-menu">
-	 <div class="brand">SysBank Gold: <i class="fa fa-money fa-2x"></i></div>
-	<i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  <div class="brand">SysBank Gold: <i class="fa fa-money fa-2x"></i>
+  </div>
+	 <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
   <div class="menu-list">
   	<ul id="menu-content" class="menu-content collapse out">
     	<li>
-      	<a href="#">
-        	<i class="fa fa-dashboard fa-lg"></i> Tela Principal
-        </a>
+      	<%= link_to "Tela Principal", root_path, :class => 'fa fa-dashboard fa-lg' %>
       </li>
 
-      <li  data-toggle="collapse" data-target="#products" class="collapsed active">
-        <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
-      </li>
-
-      <li data-toggle="collapse" data-target="#service" class="collapsed">
-        <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
-      </li>  
-      <ul class="sub-menu collapse" id="service">
-        <li>New Service 1</li>
-        <li>New Service 2</li>
-        <li>New Service 3</li>
-      </ul>
+      <% if current_user %>
+        <li data-toggle="collapse" data-target="#service" class="collapsed">
+          <a href="#"><i class="fa fa-globe fa-lg"></i> Conta <span class="arrow"></span></a>
+        </li>   
+        <ul class="sub-menu collapse" id="service">
+          <li><%= link_to "Cadastrar Conta", new_account_path %></li>
+            <% if user_has_account? %>
+              <li><%= link_to "Alterar Senha de Conta", edit_account_path(user_account) %></li>
+              <li><%= link_to "Encerrar", root_path %></li>
+            <% end %>
+        </ul>
+      <% end %>
 
       <li data-toggle="collapse" data-target="#new" class="collapsed">
         <a href="#"><i class="fa fa-user fa-lg"></i> Usuário <span class="arrow"></span></a>
@@ -28,9 +27,9 @@
       <ul class="sub-menu collapse" id="new">
         <% if current_user %>
           <li><%= link_to "Deslogar ", destroy_user_session_path, :method=>'delete'%></li>
+          <li>Alterar Informações</li>
+          <li>Mudar Senha</li>
         <% end %>
-        <li>Alterar Informações</li>
-        <li>Mudar Senha</li>
       </ul>
  		</div>
 	</div>

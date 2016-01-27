@@ -1,0 +1,11 @@
+<%= simple_form_for @account do |f| %>
+
+  <%= f.error_notification %>
+
+  <%= f.input :password, label: 'Senha da conta', hint: 'Apenas números' %>
+  <%= f.input :password_confirmation, label: 'Confirme a senha' %>
+
+  <%= f.button :submit, :class => 'btn btn-primary btn-lg btn-block', id: "submit" %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), root_path, :class => 'btn btn-default btn-block' %>
+  
+<% end %>

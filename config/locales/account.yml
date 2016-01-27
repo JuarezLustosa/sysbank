@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      account:
+        one: "Conta"
+        other: "Contas"
+
+    attributes:
+      address:
+        number: "Número da conta"
+        password: "Senha da conta"
+        password_confirmation: "Confirmar senha" 
+        status: "Status da Conta"
+        balance: "Saldo"
+        
