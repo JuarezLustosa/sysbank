@@ -8,8 +8,7 @@ RSpec.describe User, type: :model do
     password: "12345678", 
     password_confirmation: "12345678") }
 
-  let(:user_saved) { FactoryGirl.create(:user)}
-
+  let(:user_saved) { create(:user)}
 
   context "validate presence of" do
     before do 
@@ -35,6 +34,11 @@ RSpec.describe User, type: :model do
     it "cpf" do
       user.cpf = user_saved.cpf
       expect(user).to be_invalid
+    end
+
+    it "email" do
+      user.email = user_saved.email
+      expect(user).to be_invalid
     end        
   end
 
@@ -46,5 +50,10 @@ RSpec.describe User, type: :model do
     it "not to be changed" do
       expect(user).not_to be_email_changed
     end
-  end  
+  end
+
+  it "have account" do
+    allow(user).to receive(:account).and_return(:true)
+    expect(user.has_account?).to be true
+  end
 end
