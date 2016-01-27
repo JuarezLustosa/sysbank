@@ -3,6 +3,12 @@
  */
 
 /* User sign in and sign forms. */
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
 .border-form-div {
   max-width: 1000px;
   padding: 19px 29px 29px;
@@ -163,8 +169,4 @@
   .nav-side-menu .menu-list .menu-content {
     display: block;
   }
-}
-body {
-  margin: 0px;
-  padding: 0px;
 }
