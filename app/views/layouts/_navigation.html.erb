@@ -16,7 +16,7 @@
           <li><%= link_to "Cadastrar Conta", new_account_path %></li>
             <% if user_has_account? %>
               <li><%= link_to "Alterar Senha de Conta", edit_account_path(user_account) %></li>
-              <li><%= link_to "Encerrar", root_path %></li>
+              <li><%= link_to "Encerrar", accounts_path %></li>
             <% end %>
         </ul>
       <% end %>

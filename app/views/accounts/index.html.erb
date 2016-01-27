@@ -1,25 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Accounts</h1>
+<% if @accounts.present? %>
+  <h1>Encerramento de Conta</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @accounts.each do |account| %>
+  <table class="table table-striped table-bordered table-condensed">
+    <thead>
       <tr>
-        <td><%= link_to 'Show', account %></td>
-        <td><%= link_to 'Edit', edit_account_path(account) %></td>
-        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Número da Conta</th>
+        <th>Saldo</th>
+        <th>Encerrar</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Account', new_account_path %>
+    <tbody>
+      <% @accounts.each do |account| %>
+        <tr>
+          <td><%= account.number %></td>
+          <td><%= account.balance %></td>
+          <td id="close_button">
+            <%= switch_button_close(account) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="page-header">
+    <h1> Você não possue conta aberta. Deja criar uma 
+      <%= link_to 'criar conta', new_account_path %> ? 
+    </h1>
+  </div>
+<% end %>

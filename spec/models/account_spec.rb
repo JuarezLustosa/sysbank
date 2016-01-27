@@ -18,7 +18,7 @@ RSpec.describe Account, type: :model do
   it "change name attribute id to number" do
     allow(account).to receive(:id).and_return(1)
     expect(account.number).to eq 1
-  end 
+  end
 
   context "in password" do
     it "validade presence" do
@@ -67,6 +67,33 @@ RSpec.describe Account, type: :model do
     it "can't be negative" do
       account.balance = -1
       expect(account).to be_invalid
+      expect_error_on :balance
+    end
+  end
+
+  context 'filter active account' do
+     before :each do
+      @active  = create(:account)
+      @closed  = create(:account, status: "closed")
+    end
+    
+    context "with matching active" do
+      it "returns a sorted array of results that match" do
+        expect(Account.active).to eq [@active]
+      end
+    end
+
+    context "with non-matching active" do
+      it "omits results" do
+        expect(Account.active).to_not eq [@closed]
+      end
+    end
+  end
+
+  context "close down" do
+    it "if has balance" do
+      allow(account).to receive(:has_balance?).and_return(true)
+      allow(account.close)
       expect_error_on :balance
     end
   end

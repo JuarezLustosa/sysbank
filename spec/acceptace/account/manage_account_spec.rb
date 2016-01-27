@@ -25,4 +25,27 @@ feature "I want manage my account", %q{
     expect(page).to have_content "Deseja realizar um tranferência"
     expect(page).to have_content "Deseja realizar um saque"
   end
+
+  scenario "close account" do
+    visit root_path
+    click_link 'Encerrar'
+    expect(page).to have_content "Encerramento de Conta"
+
+    click_link 'Encerrar conta'
+
+    expect(page).to have_content "Conta encerrada com sucesso"
+  end
+
+  scenario "can't close account with balance" do
+    account.update(:balance => 10)
+
+    visit root_path
+    click_link 'Encerrar'
+    expect(page).to have_content "Encerramento de Conta"
+
+    within "td#close_button" do
+      expect(page).to have_content "Não é possivel encerrar sua conta ela possue saldo!"
+      expect(page).to_not have_link 'Encerrar conta'
+    end
+  end
 end
