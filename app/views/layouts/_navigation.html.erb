@@ -1,20 +1,22 @@
 <div class="nav-side-menu">
-  <div class="brand">SysBank Gold: <i class="fa fa-money fa-2x"></i>
-  </div>
+  <div class="brand">SysBank Gold: <i class="fa fa-money fa-2x"></i></div>
 	 <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
   <div class="menu-list">
-  	<ul id="menu-content" class="menu-content collapse out">
+    <ul id="menu-content" class="menu-content collapse out">
     	<li>
       	<%= link_to "Tela Principal", root_path, :class => 'fa fa-dashboard fa-lg' %>
       </li>
 
-      <% if current_user %>
+      <% if user_signed_in? %>
         <li data-toggle="collapse" data-target="#service" class="collapsed">
           <a href="#"><i class="fa fa-globe fa-lg"></i> Conta <span class="arrow"></span></a>
-        </li>   
+        </li>
         <ul class="sub-menu collapse" id="service">
           <li><%= link_to "Cadastrar Conta", new_account_path %></li>
             <% if user_has_account? %>
+              <li><%= link_to "Saldo na tela", account_path(current_user.account) %></li>
+              <li><%= link_to "Extrato", transactions_path %></li>
               <li><%= link_to "Alterar Senha de Conta", edit_account_path(user_account) %></li>
               <li><%= link_to "Encerrar", accounts_path %></li>
             <% end %>
@@ -25,11 +27,25 @@
         <a href="#"><i class="fa fa-user fa-lg"></i> Usuário <span class="arrow"></span></a>
       </li>
       <ul class="sub-menu collapse" id="new">
-        <% if current_user %>
+        <% if user_signed_in? %>
           <li><%= link_to "Deslogar ", destroy_user_session_path, :method=>'delete'%></li>
           <li>Alterar Informações</li>
           <li>Mudar Senha</li>
         <% end %>
       </ul>
+
+      <li>
+        <%= link_to "Depositar", new_transactions_deposit_path, :class => 'fa fa-dashboard fa-lg' %>
+      </li>
+
+       <% if user_signed_in? %>
+        <li>
+          <%= link_to "Sacar", new_transactions_withdraw_path, :class => 'fa fa-dashboard fa-lg' %>
+        </li>
+
+        <li>
+          <%= link_to "Transferir", new_transactions_transfer_path, :class => 'fa fa-dashboard fa-lg' %>
+        </li>
+      <% end %>
  		</div>
 	</div>
