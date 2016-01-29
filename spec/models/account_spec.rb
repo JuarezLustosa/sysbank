@@ -23,20 +23,20 @@ RSpec.describe Account, type: :model do
     it "validade presence" do
       account.password = nil
       expect(account).to be_invalid
-     	expect_error_on :password
+     	expect_error_on account, method: :password
     end
 
     context "length" do
 		  it "maximun is six numbers" do
 		 		account.password = "123456789"
 		 		expect(account).to be_invalid
-		 		expect_error_on :password
+		 		expect_error_on account, method: :password
 		  end
 
 		  it "minimum is six numbers" do
 		 		account.password = "123"
 		 		expect(account).to be_invalid
-		 		expect_error_on :password
+		 		expect_error_on account, method: :password
 		  end
 	  end
   end
@@ -45,7 +45,7 @@ RSpec.describe Account, type: :model do
   	it "validade presence" do
   		account.user = nil
   		expect(account).to be_invalid
-  		expect_error_on :user
+  		expect_error_on account, method: :user
   	end
   end
 
@@ -53,7 +53,7 @@ RSpec.describe Account, type: :model do
     it "validade presence" do
       account.status = nil
       expect(account).to be_invalid
-      expect_error_on :status
+      expect_error_on account, method: :status
     end
 
     it "set to active in new instance" do
@@ -61,7 +61,6 @@ RSpec.describe Account, type: :model do
       expect(account.status).to eq "active"
     end
   end
-
 
   context 'filter active account' do
      before :each do
