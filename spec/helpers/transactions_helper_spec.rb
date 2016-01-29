@@ -11,5 +11,10 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe TransactionsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#change_color_tr" do
+    let(:negative_item){ -1 }
+    it  "return danger for negative item" do
+     expect(helper.change_color_tr(negative_item)).to match /danger/
+    end
+  end
 end
