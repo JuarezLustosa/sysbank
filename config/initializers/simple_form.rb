@@ -51,6 +51,8 @@ SimpleForm.setup do |config|
     # b.use :full_error, wrap_with: { tag: :span, class: :error }
   end
 
+config.default_wrapper = :bootstrap
+
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
 
