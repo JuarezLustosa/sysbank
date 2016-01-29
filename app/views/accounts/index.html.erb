@@ -16,7 +16,7 @@
       <% @accounts.each do |account| %>
         <tr>
           <td><%= account.number %></td>
-          <td><%= account.balance %></td>
+          <td><%= number_to_currency account.balance %></td>
           <td id="close_button">
             <%= switch_button_close(account) %>
           </td>
@@ -26,8 +26,8 @@
   </table>
 <% else %>
   <div class="page-header">
-    <h1> Você não possue conta aberta. Deja criar uma 
-      <%= link_to 'criar conta', new_account_path %> ? 
+    <h1> Você não possue conta aberta. Deja criar uma
+      <%= link_to 'criar conta', new_account_path %> ?
     </h1>
   </div>
 <% end %>
