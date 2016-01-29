@@ -8,9 +8,8 @@
 
   <%= f.error_notification %>
 
-
   <%= f.input :account_target, label: 'Conta para deposito', hint: 'Número da conta que irá depositar' %>
-  <%= f.input :ammount,  label: "Valor"%>
+  <%= f.input :ammount,  label: "Valor", as: :string, input_html: { id: 'transfer_ammount' }%>
   <%= f.input :account,  label: 'Sua Conta', hint: 'Número da sua conta' %>
   <%= f.input :password, label: 'Senha da conta' %>
 
