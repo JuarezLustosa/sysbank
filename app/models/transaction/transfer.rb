@@ -10,11 +10,9 @@ class Transaction
     attribute :account, String
     attribute :account_target, String
     attribute :password, Integer
+    attribute :action, String, :default => "Transferência"
 
-    validates :ammount, :presence => true
-    validates :account, :presence => true
-    validates :account_target, :presence => true
-
+    validates :ammount, :account, :account_target, :presence => true
     validate  :account_balance, :check_password, :account_found
 
     def persisted?
@@ -54,10 +52,6 @@ class Transaction
 
     def account_balance
       errors.add(:ammount, "Sua conta não pode ficar negativa") unless have_balance?
-    end
-
-    def action
-      "transfer"
     end
 
     def save

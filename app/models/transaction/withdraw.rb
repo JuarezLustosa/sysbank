@@ -9,6 +9,7 @@ class Transaction
     attribute :ammount, Decimal
     attribute :account, String
     attribute :password, Integer
+    attribute :action, String, :default => "Saque"
 
     validates :ammount, :account, :presence => true
     validate  :account_balance, :check_password, :account_notfound
@@ -42,10 +43,6 @@ class Transaction
 
     def account_notfound
       errors.add(:account, "Conta não encontrada") unless find_account
-    end
-
-    def action
-      "withdraw"
     end
 
     def save

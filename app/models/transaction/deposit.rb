@@ -10,7 +10,7 @@ class Transaction
     attribute :ammount, Decimal
     attribute :account, Integer
     attribute :location, String
-    attribute :action, String, :default => "deposit"
+    attribute :action, String, :default => "Deposito"
 
     validates :ammount, :numericality => { :greater_than =>  0 }, :presence => true
     validates :account, :presence => true
