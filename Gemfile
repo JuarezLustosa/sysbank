@@ -4,6 +4,7 @@ gem 'rails', '4.2.5'
 gem 'pg'
 gem 'devise'
 gem 'bcrypt'
+gem 'virtus'
 
 #assets
 gem 'sass-rails', '~> 5.0'
