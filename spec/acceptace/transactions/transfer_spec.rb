@@ -14,7 +14,7 @@ feature "I want transfer my money", %q{
   let(:tax) { Transaction::TransferTaxs.new(ammount).calculate }
 
   background do
-    login_as(user, :scope => :user)
+    login_as(account.user, :scope => :user)
   end
 
   scenario "transfer" do
@@ -26,12 +26,13 @@ feature "I want transfer my money", %q{
 
     fill_in "Valor",               with: ammount_to_tranfer
     fill_in "Conta para deposito", with: account_to_transfer.id
-    fill_in "Sua Conta",               with: account.id
+    fill_in "Sua Conta",           with: account.id
     fill_in "Senha da conta",      with: account.password
 
     click_button "Transferir"
 
     expect(page).to have_content "Transferência realizada com sucesso"
+    click_link "Saldo na tela"
     expect(page).to have_content "Seu saldo é de R$ #{balance}"
   end
 

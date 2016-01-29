@@ -4,13 +4,11 @@ class Transactions::TransferController < ApplicationController
   end
 
   def create
-    params_account = params[:transaction] ? params[:transaction][:account] : params[:transaction_transfer][:account]
-    @account = Account.find_by_id(params_account)
     @transaction = Transaction::Transfer.new(params[:transaction] || params[:transaction_transfer])
 
     if @transaction.save
       flash[:success] = "Transferência realizada com sucesso"
-      redirect_to account_path(@account)
+      redirect_to root_path
     else
       render action: 'new'
     end

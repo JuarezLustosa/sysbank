@@ -4,7 +4,7 @@ class Transactions::DepositController < ApplicationController
   end
 
  def create
-    @transaction = Transaction::Deposit.new(params[:transaction])
+    @transaction = Transaction::Deposit.new(params[:transaction] || params[:transaction_transfer] )
 
     if @transaction.save
       flash[:success] = "Deposito realizado com sucesso"

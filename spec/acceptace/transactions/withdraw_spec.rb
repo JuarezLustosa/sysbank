@@ -12,8 +12,7 @@ feature "I want withdraw my money", %q{
   let(:transaction_deposit) {create(:transaction, account: account, ammount: ammount, action: "Deposito" )}
 
   background do
-    login_as(user, :scope => :user)
-    account
+    login_as(account.user, :scope => :user)
   end
 
   scenario "take my money" do
@@ -30,7 +29,6 @@ feature "I want withdraw my money", %q{
     click_button "Sacar"
 
     expect(page).to have_content "Saque realizado com sucesso"
-    expect(page).to have_content "Seu saldo é de R$ 0.0"
   end
 
   scenario "can't withdraw more than I have" do
@@ -47,5 +45,7 @@ feature "I want withdraw my money", %q{
     click_button "Sacar"
 
     expect(page).to have_content "Sua conta não pode ficar negativa"
+    click_link "Saldo na tela"
+    expect(page).to have_content "Seu saldo é de R$ 0.0"
   end
 end
