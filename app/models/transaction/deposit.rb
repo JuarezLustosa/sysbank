@@ -12,8 +12,7 @@ class Transaction
     attribute :location, String
     attribute :action, String, :default => "Deposito"
 
-    validates :ammount, :numericality => { :greater_than =>  0 }, :presence => true
-    validates :account, :presence => true
+    validates :ammount, :account, :presence => true
     validate  :account_notfound
 
     def persisted?
