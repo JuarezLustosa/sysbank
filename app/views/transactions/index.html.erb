@@ -1,0 +1,28 @@
+
+
+<div class="page-header">
+  <h1>Vizualizar extrato</h1>
+</div>
+
+<%= form_tag transactions_path, :method => :get, :remote => true, class: "form-inline" do %>
+  <div class="form-group hidden-print">
+    <label class="sr-only" for="exampleInputEmail2">Account</label>
+
+    <%= label_tag :account, "Número da conta:" %>
+    <%= text_field_tag :account, "", autofocus: true %>
+    <%= label_tag :date_start, "Data Inicio:" %>
+    <%= text_field_tag :date_start, "", :class => "daterange", autofocus: true %>
+    <%= label_tag :date_start, "Data Fim:" %>
+    <%= text_field_tag :date_end, (""), :class => "daterange" %>
+
+    <%= submit_tag 'Vizualizar', class: "btn btn-primary" %>
+
+  </div>
+<% end %>
+
+<div class="center-block" id="flash">
+</div>
+
+<div id="statement">
+  <%= render :partial => 'statements'%>
+</div>

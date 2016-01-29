@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      transaction:
+        one: "Transação"
+        other: "Transações"
+
+    attributes:
+      address:
+        ammount: "Valor a depositar"
+        password: "Senha da conta"
+        action: "Tipo transação"
+        status: "Status da Conta"
+        balance: "Saldo"

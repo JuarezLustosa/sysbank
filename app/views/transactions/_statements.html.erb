@@ -1,0 +1,30 @@
+<% if @statements.any? %>
+
+  <div class="page-header">
+    <h2>Extato da conta <%= @account.number %></h2>
+    <h3>Nome: <%= @account.user_name %></h3>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Movimentação</th>
+        <th>Data</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @statements.each do |statement| %>
+        <tr class=<%= change_color_tr(statement.ammount)%>>
+          <td><%= statement.action %></td>
+          <td><%= l statement.created_at %></td>
+          <td><%= number_to_currency statement.ammount %></td>
+          <td><%= %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="well">
+    <p class="lead text-right">Saldo Final <%= number_to_currency @account.balance %></p>
+  </div>
+<% end %>

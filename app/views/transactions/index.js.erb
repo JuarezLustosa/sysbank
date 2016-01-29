@@ -1,0 +1,5 @@
+$('#statement').html("<%= escape_javascript(render :partial => 'transactions/statements') %>");
+
+<% unless @statements.any? %>
+  $.flash("Não foram encontrados transações para a pesquisa informada", true );
+<% end %>
