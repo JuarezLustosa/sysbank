@@ -4,14 +4,10 @@ class Account < ActiveRecord::Base
   belongs_to :user
   after_initialize :set_initial_status
   delegate :name, :cpf, to: :user, prefix: true, allow_nil: true
+  has_many :transactions
 
   validates :password, length: 6..6, :presence => true, on: :create
   validates :user, :status, :presence => true
-  validate  :balance_cant_be_negative
-
-  def balance_cant_be_negative
-  	errors.add(:balance, "Sua Conta não pode ficar negativa") if balance < 0  	
-  end
 
 	def set_initial_status
   	self.status ||= "active"
@@ -29,9 +25,13 @@ class Account < ActiveRecord::Base
     balance > 0
   end
 
-  def close #TOTO put it in a PORO
+  def balance
+    transactions.sum(:ammount)
+  end
+
+  def close #TOTO put it in a Policy
     if has_balance?
-      errors.add(:balance, "Sua Conta não pode ser encerrada, pois ela possui saldo.")
+      errors.add(:base, "Sua Conta não pode ser encerrada, pois ela possui saldo.")
     else
       update(status: "closed")
     end

@@ -5,7 +5,6 @@ RSpec.describe Account, type: :model do
   let(:account) { Account.new(
     password: "121212",
     user: user,
-    balance: 0,
     status: "active")
   }
 
@@ -63,13 +62,6 @@ RSpec.describe Account, type: :model do
     end
   end
 
-  context 'balance' do
-    it "can't be negative" do
-      account.balance = -1
-      expect(account).to be_invalid
-      expect_error_on :balance
-    end
-  end
 
   context 'filter active account' do
      before :each do
@@ -94,7 +86,7 @@ RSpec.describe Account, type: :model do
     it "if has balance" do
       allow(account).to receive(:has_balance?).and_return(true)
       allow(account.close)
-      expect_error_on :balance
+      expect_error_on account, method: :base
     end
   end
 end
