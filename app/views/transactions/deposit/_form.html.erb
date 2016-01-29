@@ -1,0 +1,18 @@
+<div class="page-header">
+  <h1>Realizar Deposito</h1>
+</div>
+
+<%= simple_form_for @transaction,
+  url:     transactions_deposit_path,
+  method:  :post,
+  wrapper: :vertical_form do |f| %>
+
+  <%= f.error_notification %>
+  <%= f.input :account, label: 'Conta', hint: 'Número da conta para quem irá depositar.' %>
+  <%= f.input :ammount, label: 'Valor', as: 'string' %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Depositar", :class => 'btn btn-primary btn-lg btn-block' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), root_path, :class => 'btn btn-default btn-block' %>
+  </div>
+<% end %>
