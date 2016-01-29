@@ -5,6 +5,7 @@ gem 'pg'
 gem 'devise'
 gem 'bcrypt'
 gem 'virtus'
+gem 'rails_12factor', group: :production
 
 #assets
 gem 'sass-rails', '~> 5.0'
@@ -20,6 +21,8 @@ gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem "font-awesome-rails"
+gem 'bootstrap-daterangepicker-rails'
+gem 'momentjs-rails'
 
 group :development, :test do
 	gem 'rspec-rails', '~> 3.0'

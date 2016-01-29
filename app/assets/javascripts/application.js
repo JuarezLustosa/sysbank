@@ -15,3 +15,8 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+//= require moment
+//= require daterangepicker
+//= require flash.js.coffee
+//= require jquery.maskMoney.js
+//= require jquery.maskedinput.js
