@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>Realizar Transferência</h1>
+</div>
+
+<%= simple_form_for @transaction,
+  :url => transactions_transfer_path,
+  :method => :post, action: :create  do |f| %>
+
+  <%= f.error_notification %>
+
+
+  <%= f.input :account_target, label: 'Conta para deposito', hint: 'Número da conta que irá depositar' %>
+  <%= f.input :ammount,  label: "Valor"%>
+  <%= f.input :account,  label: 'Sua Conta', hint: 'Número da sua conta' %>
+  <%= f.input :password, label: 'Senha da conta' %>
+
+  <%= f.button :submit, "Transferir", :class => 'btn btn-primary btn-lg btn-block' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")), root_path, :class => 'btn btn-default btn-block' %>
+<% end %>
