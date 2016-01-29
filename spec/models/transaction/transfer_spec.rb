@@ -76,7 +76,7 @@ RSpec.describe Transaction::Transfer do
 
   context "action" do
     it "return string" do
-      expect(transfer.action).to eq("transfer")
+      expect(transfer.action).to eq("Transferência")
     end
   end
 end

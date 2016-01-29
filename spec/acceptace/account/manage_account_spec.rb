@@ -6,6 +6,8 @@ feature "I want manage my account", %q{
 } do
 
   let(:account) {create(:account)}
+  let(:ammount) { 150.30 }
+  let(:transaction_deposit) {create(:transaction, account: account, ammount: ammount, action: "Deposito" )}
 
   background do
     login_as(account.user, :scope => :user)
@@ -18,9 +20,9 @@ feature "I want manage my account", %q{
 
     fill_in "Senha da conta", :with => "121212"
     fill_in "Confirme a senha", :with => "121212"
-    
-    find('input#submit').click # TODO check why click_button does't work 
-    
+
+    find('input#submit').click # TODO check why click_button does't work
+
     expect(page).to have_content "Deseja realizar um deposito"
     expect(page).to have_content "Deseja realizar um tranferência"
     expect(page).to have_content "Deseja realizar um saque"
@@ -37,7 +39,7 @@ feature "I want manage my account", %q{
   end
 
   scenario "can't close account with balance" do
-    account.update(:balance => 10)
+    transaction_deposit
 
     visit root_path
     click_link 'Encerrar'

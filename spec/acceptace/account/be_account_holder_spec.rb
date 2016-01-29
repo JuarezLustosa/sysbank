@@ -19,10 +19,10 @@ feature "I want create my account", %q{
 
     fill_in "Senha da conta", :with => "121212"
     fill_in "Confirme a senha", :with => "121212"
-    
-    find('input#submit').click # TODO check why click_button does't work 
-    
-    expect(page).to have_content "Parabéns #{user.name} o número da sua conta é #{user.account_number}"
+
+    find('input#submit').click # TODO check why click_button does't work
+
+    expect(page).to have_content "#{user.name} o número da sua conta é #{user.account_number}"
     expect(page).to have_content "Por favor não aceite ajuda de estranhos! Guarde bem a sua senha"
   end
 end

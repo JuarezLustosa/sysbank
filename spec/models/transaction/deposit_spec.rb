@@ -45,7 +45,7 @@ RSpec.describe Transaction::Deposit do
 
   context "action" do
     it "must save a string deposit" do
-      expect(deposit.action).to eq("deposit")
+      expect(deposit.action).to eq("Deposito")
     end
   end
 end

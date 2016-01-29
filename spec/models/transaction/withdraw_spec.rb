@@ -62,8 +62,8 @@ RSpec.describe Transaction::Withdraw do
   end
 
   context "action" do
-    it "must save a string deposit" do
-      expect(withdraw.action).to eq("withdraw")
+    it "must save a string" do
+      expect(withdraw.action).to eq("Saque")
     end
   end
 end
