@@ -27,10 +27,9 @@
         <a href="#"><i class="fa fa-user fa-lg"></i> Usuário <span class="arrow"></span></a>
       </li>
       <ul class="sub-menu collapse" id="new">
+        <li><%= link_to "Cadastrar", new_user_registration_path%></li>
         <% if user_signed_in? %>
           <li><%= link_to "Deslogar ", destroy_user_session_path, :method=>'delete'%></li>
-          <li>Alterar Informações</li>
-          <li>Mudar Senha</li>
         <% end %>
       </ul>
 
